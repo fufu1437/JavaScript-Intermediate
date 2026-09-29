@@ -1,6 +1,12 @@
-const promise = new Promise((resolve, reject) => {
-	// resolve with 'hello'
-	resolve('hello')
-})
+function readInt(line) {
+	return Promise.resolve(Number(line))
+}
 
-promise.then(value => console.log(value))
+async function main() {
+	const lines = require('fs').readFileSync(0, 'utf-8').trim().split('\n')
+	const a = await readInt(lines[0])
+	const b = await readInt(lines[1])
+	console.log(a + b)
+}
+
+main()
