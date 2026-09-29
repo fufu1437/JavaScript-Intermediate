@@ -3,7 +3,7 @@ async function main() {
 	const promises = lines.map(line => Promise.resolve(Number(line)))
 	// Use Promise.all and sum.
 	const num = await Promise.all(promises)
-	num.reduce((acc, v) => acc += v, 0)
+	console.log(num.reduce((acc, v) => acc += v, 0))
 }
 
 main()
