@@ -2,7 +2,6 @@ const counter = (function () {
 	// Create private state and return { increment, value }.
 	let count = 0
 	return {
-
 		increment: () => { count++ },
 		value: () => count
 	}
