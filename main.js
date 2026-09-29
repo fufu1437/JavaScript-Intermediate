@@ -1,12 +1,21 @@
-function greet() {
-	return 'Hi, ' + this.name
+class Person {
+	// constructor + greet()
+	name
+	constructor(name) {
+		this.name = name
+	}
+	greet() {
+		return `Hi, I am ${this.name}`
+	}
+}
+
+class Student extends Person {
+	study() {
+		return `${this.name} studies`
+	}
 }
 
 const name = require('fs').readFileSync(0, 'utf-8').trim()
-// Build an object { name } and call greet so this points to it.
-// Then print the result.
-const obj = { name: name }
-greet = greet.bind(obj)
-console.log(greet())
-
-
+const s = new Student(name)
+console.log(s.greet())
+console.log(s.study())
