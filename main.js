@@ -3,6 +3,5 @@ const line = require('fs').readFileSync(0, 'utf-8').trimEnd()
 // count every digit in `line`. Remember what .match returns when there is
 // no match at all -- that case has to print 0, not crash.
 
-console.log(line.match(/[0-9]/g)?.length ?? 0)
-
+console.log((line.match(/[0-9]/g) || []).length)
 
