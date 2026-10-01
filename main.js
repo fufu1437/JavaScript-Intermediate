@@ -1,24 +1,20 @@
-class AgeError extends Error {
-	// constructor(age) -> set name, age, and call super with a message
-	constructor(age) {
-		super(age)
-		this.name = 'AgeError'
-		this.age = age
+function* fib() {
+	const f = [0, 1]
+	let n = 0
+	while(true) {
+		if(n < 2) {
+			yield f[n++]
+			continue
+		}
+		f.push(f[n - 2] + f[n - 1])
+		yield f[n]
+		n++
 	}
-}
-
-function validateAge(n) {
-	// Throw AgeError for n < 0 or n > 150; else return n.
-	if(n < 0 || n > 150) {
-		throw new AgeError(n)
-	}
-	return n
+	// yield 0, 1, 1, 2, 3, 5, ... forever
 }
 
 const n = Number(require('fs').readFileSync(0, 'utf-8').trim())
-try {
-	console.log('OK', validateAge(n))
-} catch(err) {
-	if(err instanceof AgeError) console.log('ERROR', err.age)
-	else throw err
+const gen = fib()
+for(let i = 0; i < n; i++) {
+	console.log(gen.next().value)
 }
